@@ -1,5 +1,5 @@
 <#
-.Synopsis
+.SYNOPSIS
     Get Files and Folders amount
 .DESCRIPTION
     Get amount of files and (sub)folders in a folder from SharePoint Online Library
@@ -16,12 +16,14 @@
     Created by:   	Daniel Giessenburg
     Filename:     	SPO-PS-GetFilesAndFolderAmount.ps1
     Organization: 	GSSNBRG
-    Version:        2024-05-22
+    Version:        2024-05-23
+.REQUIRMENTS
+    PowerShell 5.1 or 7.2
+    PowerShell Module: PnP PowerShell | https://github.com/pnp/powershell
 .COMPONENT
     Project: Github\SharePoint-PowerShell
     Github: https://github.com/DAGiessenburg/SharePoint-PowerShell
 #>
-
 
 Function Get-FilesAndFolderAmount(){
     param([string]$SiteUrl,[string]$FolderURL)
@@ -37,10 +39,11 @@ Function Get-FilesAndFolderAmount(){
     Connect-PnPOnline -Url $SiteUrl -Interactive
     $connection = Get-PnPConnection
 
-    #Get files form Folder
+    #Get files and folders from Parameter Folder (FolderURL)
     $itemsFiles = Get-PnPFolderItem -FolderSiteRelativeUrl $FolderURL -Recursive -ItemType File -Connection $connection 
     $itemsFolders = Get-PnPFolderItem -FolderSiteRelativeUrl $FolderURL -Recursive -ItemType Folder -Connection $connection 
 
+    #Write amount of files and folders
     write-host $FolderURL -ForegroundColor Yellow
     write-host "Amount of Files: "$itemsFiles.count -ForegroundColor DarkYellow
     write-host "Amount of Folders: "$itemsFolders.count -ForegroundColor DarkYellow
