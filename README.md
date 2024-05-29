@@ -11,3 +11,4 @@ This Github repository has multiple PowerShell scripts for SharePoint Online
 |  FileName | Description |
 |------|------|
 | [SPO-PS-GetFilesAndFolderAmount.ps1](SPO-PS-GetFilesAndFolderAmount.ps1) | Get amount of files and (sub)folders in a folder from SharePoint Online Library |
+| [SPO-PS-GetSitesAndTeams.ps1](SPO-PS-GetSitesAndTeams.ps1) | Get SharePoint site collections & MS Teams environments |
